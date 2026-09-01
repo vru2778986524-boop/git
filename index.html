@@ -3446,6 +3446,44 @@ body {
   color: #0f172a;
   background: linear-gradient(135deg, rgba(56,189,248,.2), rgba(244,114,182,.2));
 }
+
+/* ===== Horizontal certificate gallery + scroll storytelling ===== */
+.cert-images {
+  display: flex !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  gap: 20px !important;
+  padding: 10px 4px 22px !important;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.cert-images::-webkit-scrollbar {
+  display: none;
+}
+
+.cert-images img {
+  flex: 0 0 auto !important;
+  width: 260px !important;
+  height: 350px !important;
+  object-fit: contain !important;
+  scroll-snap-align: center !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  aspect-ratio: auto !important;
+}
+
+@media (max-width: 768px) {
+  .cert-images img {
+    width: 210px !important;
+    height: 285px !important;
+  }
+}
+
+/* Hero parallax: subtle background movement */
+#hero {
+  will-change: background-position;
+}
 </style>
 </head>
 <body>
@@ -4348,11 +4386,45 @@ function initNavSpy() {
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 }
+function initHeroParallax() {
+  const hero = document.getElementById("hero");
+  if (!hero) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let ticking = false;
+  function update() {
+    const y = window.scrollY;
+    if (y < window.innerHeight * 1.2) {
+      hero.style.backgroundPositionY = (y * 0.25) + "px";
+    }
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+}
+
+function initHorizontalGallery() {
+  const gallery = document.querySelector(".cert-images");
+  if (!gallery) return;
+  gallery.addEventListener("wheel", (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      gallery.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+}
 document.addEventListener("DOMContentLoaded", () => {
   initSpotlight();
   initTilt();
   initScrollProgress();
   initNavSpy();
+  initHeroParallax();
+  initHorizontalGallery();
 });
 
 /* ===== Loader v2: longer, progress, playful buttons ===== */
