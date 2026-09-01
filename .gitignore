@@ -5,3 +5,8 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Local preview/screenshots
+_preview.html
+_screenshot*.png
+
