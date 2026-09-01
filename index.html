@@ -3484,6 +3484,43 @@ body {
 #hero {
   will-change: background-position;
 }
+
+/* ===== Certificate gallery navigation ===== */
+.cert-nav {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.cert-nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #f472b6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 26px rgba(56,189,248,.3);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.cert-nav-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 14px 32px rgba(56,189,248,.4);
+}
+
+.cert-nav-btn:active {
+  transform: scale(.94);
+}
+
+[data-theme="light"] .cert-nav-btn {
+  box-shadow: 0 8px 22px rgba(14,165,233,.25);
+}
 </style>
 </head>
 <body>
@@ -3617,6 +3654,11 @@ body {
       <img src="img_f5f8384ca79ab716ab2345945072a4d7.png" alt="证书" loading="lazy" onclick="openLightbox('img_f5f8384ca79ab716ab2345945072a4d7.png')" />
       <img src="Snipaste_2026-07-31_16-56-24.png" alt="证书" loading="lazy" onclick="openLightbox('Snipaste_2026-07-31_16-56-24.png')" />
     </div>
+    <div class="cert-nav" aria-hidden="true">
+      <button class="cert-nav-btn prev" id="certPrev" aria-label="上一张">←</button>
+      <button class="cert-nav-btn next" id="certNext" aria-label="下一张">→</button>
+    </div>
+  
   </div>
 </section>
 
@@ -4418,6 +4460,14 @@ function initHorizontalGallery() {
     }
   }, { passive: false });
 }
+function initCertNav() {
+  const gallery = document.querySelector(".cert-images");
+  const prev = document.getElementById("certPrev");
+  const next = document.getElementById("certNext");
+  if (!gallery || !prev || !next) return;
+  prev.addEventListener("click", () => gallery.scrollBy({ left: -340, behavior: "smooth" }));
+  next.addEventListener("click", () => gallery.scrollBy({ left: 340, behavior: "smooth" }));
+}
 document.addEventListener("DOMContentLoaded", () => {
   initSpotlight();
   initTilt();
@@ -4425,6 +4475,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavSpy();
   initHeroParallax();
   initHorizontalGallery();
+  initCertNav();
 });
 
 /* ===== Loader v2: longer, progress, playful buttons ===== */
