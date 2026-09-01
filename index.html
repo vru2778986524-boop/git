@@ -3521,6 +3521,10 @@ body {
 [data-theme="light"] .cert-nav-btn {
   box-shadow: 0 8px 22px rgba(14,165,233,.25);
 }
+
+.hero-inner {
+  will-change: transform, opacity;
+}
 </style>
 </head>
 <body>
@@ -4430,14 +4434,23 @@ function initNavSpy() {
 }
 function initHeroParallax() {
   const hero = document.getElementById("hero");
+  const inner = document.querySelector(".hero-inner");
   if (!hero) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   let ticking = false;
   function update() {
     const y = window.scrollY;
-    if (y < window.innerHeight * 1.2) {
-      hero.style.backgroundPositionY = (y * 0.25) + "px";
+    const limit = Math.max(1, window.innerHeight);
+    const p = Math.min(1, y / limit);
+
+    // Background drifts down
+    hero.style.backgroundPositionY = (y * 0.2) + "px";
+
+    // Content lags behind / fades slightly — clearly visible parallax
+    if (inner) {
+      inner.style.transform = `translateY(${(y * 0.35).toFixed(1)}px)`;
+      inner.style.opacity = String(Math.max(0, 1 - p * 0.35));
     }
     ticking = false;
   }
