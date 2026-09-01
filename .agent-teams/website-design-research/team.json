@@ -1,0 +1,32 @@
+{
+  "name": "website-design-research",
+  "id": "website-design-research",
+  "description": "研究国内外高赞/高评分网站的设计趋势，总结可落地的视觉排版方案，用于改版本地个人简历网站。",
+  "captainSessionId": "session-b21c3912-8704-4ef7-863a-c765827ce57e",
+  "createdAt": 1786973456131,
+  "members": [
+    {
+      "id": "a2a2c8c9-3bc5-4466-8c44-6bc75418a2f5",
+      "name": "design-researcher-1",
+      "role": "全球高端网页设计趋势研究员：负责 Awwwards / Dribbble / Behance / GitHub 高赞项目",
+      "joinedAt": 1786973459521,
+      "status": "idle"
+    },
+    {
+      "id": "9319e3c5-adfe-4dac-9fe7-fdc7dabd6cfa",
+      "name": "design-researcher-2",
+      "role": "国内高赞网站/个人主页研究员：负责抖音、小红书、知乎、B站等平台上的高赞网页/简历/个人主页案例",
+      "joinedAt": 1786973459539,
+      "status": "idle"
+    },
+    {
+      "id": "3315f999-19c2-4c22-b735-aabc839a163a",
+      "name": "design-researcher-3",
+      "role": "落地转化与排版研究员：负责总结高赞网站可落地的视觉/排版/动效模式，输出具体 CSS/设计建议",
+      "joinedAt": 1786973459554,
+      "status": "idle"
+    }
+  ],
+  "tasks": [],
+  "taskSeq": 0
+}
