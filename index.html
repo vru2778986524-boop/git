@@ -3302,6 +3302,53 @@ body {
   display: inline-block;
   vertical-align: -.12em;
 }
+
+/* ===== Skill-driven refinements ===== */
+.hero-floaties span svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+
+/* Projects: asymmetric bento instead of generic 3-equal cards */
+#projPanels .skills-grid {
+  grid-template-columns: repeat(12, 1fr) !important;
+}
+
+#projPanels .skill-card {
+  grid-column: span 6 !important;
+}
+
+#projPanels .skill-card:nth-child(1) {
+  grid-column: span 7 !important;
+}
+
+#projPanels .skill-card:nth-child(2) {
+  grid-column: span 5 !important;
+}
+
+#projPanels .skill-card:nth-child(3) {
+  grid-column: span 12 !important;
+}
+
+@media (max-width: 960px) {
+  #projPanels .skill-card,
+  #projPanels .skill-card:nth-child(1),
+  #projPanels .skill-card:nth-child(2),
+  #projPanels .skill-card:nth-child(3) {
+    grid-column: span 1 !important;
+  }
+}
+
+/* Tactile feedback on interactive elements */
+.hero .contact-btn:active,
+.tab-btn:active,
+.nav-btn:active,
+.back-to-top:active,
+#projPanels .skill-card a:active {
+  transform: scale(.96) !important;
+  transition: transform .1s ease !important;
+}
 </style>
 </head>
 <body>
@@ -3364,7 +3411,7 @@ body {
     <h1 data-text="黄谷凡">黄谷凡</h1>
       <span class="hero-name-en" aria-hidden="true">Huang Gufan</span>
       <div class="hero-pattern" aria-hidden="true"></div>
-      <div class="hero-floaties" aria-hidden="true"><span>🧬</span><span>🤖</span><span>⚡</span><span>🐋</span></div>
+      <div class="hero-floaties" aria-hidden="true"><span><svg class='floaty-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M8 3c-2 9 2 9 0 18M16 3c2 9-2 9 0 18M8 6h8M8 12h8M8 18h8'/></svg></span><span><svg class='floaty-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='8' width='14' height='11' rx='2'/><circle cx='9.5' cy='13' r='1' fill='currentColor'/><circle cx='14.5' cy='13' r='1' fill='currentColor'/><path d='M12 8V4M9 4h6'/></svg></span><span><svg class='floaty-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M13 2L4 14h6l-1 8 9-12h-6l1-8z'/></svg></span><span><svg class='floaty-ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3 13c2-6 8-9 14-6l4 2c-2 5-7 9-12 9-3 0-6-2-6-5z'/><path d='M5 15c2 2 5 3 8 3M14 10h1'/></svg></span></div>
     <p class="subtitle" id="heroSubtitle"></p>
     <div class="tags" id="heroTags"></div>
     <div class="contact-row" id="heroContact"></div>
