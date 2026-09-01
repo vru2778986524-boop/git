@@ -3562,6 +3562,21 @@ body {
   from { opacity: 0; transform: translateX(44px); }
   to { opacity: 1; transform: translateX(0); }
 }
+
+/* ===== Fix mobile project cards: collapse to single column ===== */
+@media (max-width: 960px) {
+  #projPanels .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #projPanels .skill-card,
+  #projPanels .skill-card:nth-child(1),
+  #projPanels .skill-card:nth-child(2),
+  #projPanels .skill-card:nth-child(3) {
+    grid-column: auto !important;
+    width: 100% !important;
+  }
+}
 </style>
 </head>
 <body>
