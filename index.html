@@ -3349,6 +3349,103 @@ body {
   transform: scale(.96) !important;
   transition: transform .1s ease !important;
 }
+
+/* ===== Premium polish pass (impeccable / design-taste) ===== */
+:root {
+  --c-shadow: 0 14px 34px rgba(15,23,42,.18);
+  --c-shadow-lg: 0 22px 50px rgba(15,23,42,.22);
+}
+
+.hero h1 {
+  filter: drop-shadow(0 8px 24px rgba(56,189,248,.25)) !important;
+}
+
+.hero h1::before {
+  display: block !important;
+  content: "个人简历 · 2026";
+  font-family: var(--font-mono);
+  font-size: .18em;
+  font-weight: 600;
+  letter-spacing: .35em;
+  color: rgba(56,189,248,.85);
+  margin-bottom: .35em;
+  opacity: .9;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .hero h1::before {
+  color: rgba(2,132,199,.75);
+}
+
+.section-title::before {
+  box-shadow: 0 0 14px rgba(56,189,248,.35), 0 0 28px rgba(244,114,182,.18) !important;
+}
+
+.highlight-card:hover,
+.skill-card:hover,
+.timeline-card:hover,
+.cert-card:hover {
+  box-shadow:
+    0 18px 40px rgba(15,23,42,.2),
+    0 0 0 1px rgba(56,189,248,.18) !important;
+}
+
+#skillsGrid .skill-bar-fill,
+.skill-bar-fill {
+  box-shadow: 0 0 10px rgba(56,189,248,.35) !important;
+}
+
+/* Staggered reveal */
+.highlight-card.fade-in:nth-child(1),
+.skill-card.fade-in:nth-child(1) {
+  transition-delay: 0ms, 0ms;
+}
+
+.highlight-card.fade-in:nth-child(2),
+.skill-card.fade-in:nth-child(2) {
+  transition-delay: 90ms, 90ms;
+}
+
+.highlight-card.fade-in:nth-child(3),
+.skill-card.fade-in:nth-child(3) {
+  transition-delay: 180ms, 180ms;
+}
+
+.highlight-card.fade-in:nth-child(4) {
+  transition-delay: 270ms, 270ms;
+}
+
+/* Skills: category index numbers */
+#skillsGrid .skill-card {
+  counter-increment: skill;
+}
+
+#skillsGrid .skill-card h4::after {
+  content: "0" counter(skill);
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: .8em;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(56,189,248,.6);
+  letter-spacing: .05em;
+}
+
+[data-theme="light"] #skillsGrid .skill-card h4::after {
+  -webkit-text-stroke: 1px rgba(2,132,199,.7);
+}
+
+/* Active nav link */
+.nav-links a.active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(244,114,182,.28));
+  box-shadow: inset 0 0 0 1px rgba(56,189,248,.35);
+}
+
+[data-theme="light"] .nav-links a.active {
+  color: #0f172a;
+  background: linear-gradient(135deg, rgba(56,189,248,.2), rgba(244,114,182,.2));
+}
 </style>
 </head>
 <body>
@@ -4234,10 +4331,28 @@ function initScrollProgress() {
   update();
 }
 
+function initNavSpy() {
+  const links = $$(".nav-links a");
+  const sections = resume.navSections.map(s => document.getElementById(s.id)).filter(Boolean);
+  if (!sections.length) return;
+
+  function onScroll() {
+    const pos = window.scrollY + 140;
+    let current = sections[0] ? sections[0].id : null;
+    for (const sec of sections) {
+      if (sec.offsetTop <= pos) current = sec.id;
+    }
+    links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
 document.addEventListener("DOMContentLoaded", () => {
   initSpotlight();
   initTilt();
   initScrollProgress();
+  initNavSpy();
 });
 
 /* ===== Loader v2: longer, progress, playful buttons ===== */
