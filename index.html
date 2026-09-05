@@ -3644,6 +3644,40 @@ body {
     url('hero-3d.svg?v=3') center / cover no-repeat,
     linear-gradient(180deg, #0b1120 0%, #101a38 100%) !important;
 }
+
+/* ===== Final: remove old background references entirely ===== */
+body {
+  background:
+    radial-gradient(1000px 620px at 18% 8%, rgba(56,189,248,.16), transparent 55%),
+    radial-gradient(900px 620px at 82% 28%, rgba(244,114,182,.12), transparent 55%),
+    linear-gradient(180deg, #dbeafe 0%, #fce7f3 50%, #dbeafe 100%) !important;
+}
+
+[data-theme="dark"] body {
+  background:
+    radial-gradient(1000px 620px at 18% 8%, rgba(56,189,248,.28), transparent 55%),
+    radial-gradient(900px 620px at 82% 28%, rgba(244,114,182,.22), transparent 55%),
+    linear-gradient(180deg, #0b1120 0%, #101a38 50%, #0b1120 100%) !important;
+}
+
+.hero-pattern {
+  display: none !important;
+  background-image: none !important;
+}
+
+.hero {
+  background:
+    linear-gradient(to right, rgba(248,250,255,.78), rgba(255,255,255,.05)),
+    url('hero-3d.svg?v=4') center / cover no-repeat,
+    linear-gradient(180deg, #dbeafe 0%, #fce7f3 100%) !important;
+}
+
+[data-theme="dark"] .hero {
+  background:
+    linear-gradient(to right, rgba(5,8,18,.78), rgba(5,8,18,.06)),
+    url('hero-3d.svg?v=4') center / cover no-repeat,
+    linear-gradient(180deg, #0b1120 0%, #101a38 100%) !important;
+}
 </style>
 </head>
 <body>
