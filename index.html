@@ -3577,6 +3577,40 @@ body {
     width: 100% !important;
   }
 }
+
+/* ===== Hero background: 3D geometric shapes composition ===== */
+.hero {
+  background:
+    linear-gradient(to right, rgba(248,250,255,.88), rgba(255,255,255,.1)),
+    url('hero-3d.svg') center / cover no-repeat !important;
+}
+
+[data-theme="dark"] .hero {
+  background:
+    linear-gradient(to right, rgba(5,8,18,.88), rgba(5,8,18,.12)),
+    url('hero-3d.svg') center / cover no-repeat !important;
+}
+
+/* ===== 3D modeling highlight card ===== */
+.highlight-card:nth-child(5) {
+  grid-column: span 12;
+  grid-row: span 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.highlight-card:nth-child(5) .icon { margin-bottom: 0; }
+.highlight-card:nth-child(5) .number { margin-top: 0; }
+.highlight-card:nth-child(5) .label { margin-top: 0; }
+
+@media (max-width: 960px) {
+  .highlight-card:nth-child(5) {
+    grid-column: auto !important;
+    display: flex !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -3757,7 +3791,8 @@ const resume = {
     { icon: "<svg class='ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0z'/><path d='M7 6H4a2 2 0 0 0 2 5h1M17 6h3a2 2 0 0 1-2 5h-1'/></svg>", number: "ACA 认证", label: "阿里云人工智能训练师 (2026.7)" },
     { icon: "<svg class='ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5z'/><path d='M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5'/></svg>", number: "1 个学期", label: "系统自学 AI 核心课程" },
     { icon: "<svg class='ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='1.6'/><ellipse cx='12' cy='12' rx='9' ry='4'/><ellipse cx='12' cy='12' rx='9' ry='4' transform='rotate(60 12 12)'/><ellipse cx='12' cy='12' rx='9' ry='4' transform='rotate(120 12 12)'/></svg>", number: "Python + AI", label: "跨学科能力栈构建中" },
-    { icon: "<svg class='ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M22 10L12 5 2 10l10 5 10-5z'/><path d='M6 12v5c3 3 9 3 12 0v-5'/></svg>", number: "2026.09", label: "本科入学，可长期实习" }
+    { icon: "<svg class='ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M22 10L12 5 2 10l10 5 10-5z'/><path d='M6 12v5c3 3 9 3 12 0v-5'/></svg>", number: "2026.09", label: "本科入学，可长期实习" },
+    { icon: "<svg class='ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M21 16V8l-9-5-9 5v8l9 5 9-5z'/><path d='M3 8l9 5 9-5M12 13v9'/></svg>", number: "3D 建模", label: "能力持续发展中" }
   ],
 
   experience: {
@@ -3787,8 +3822,8 @@ const resume = {
       label: "学习项目",
       items: [
         { name: "个人小游戏", tech: ["HTML5", "Canvas", "JavaScript", "CSS3"], desc: "独立设计开发的网页小游戏，上线于 Netlify，展现前端交互与游戏逻辑设计能力", link: "https://wanyine.netlify.app" },
-        { name: "Python 数据分析练习", tech: ["Python", "Pandas", "Jupyter"], desc: "利用 Python 简单脚本处理百行级数据，完成描述性统计与趋势观察", link: "" },
-        { name: "AI 学习笔记", tech: ["Markdown", "Jupyter Notebook"], desc: "使用 Jupyter Notebook 和 Markdown 进行学习记录与技术文档撰写", link: "" }
+        { name: "Agent Vibe Coding 实践", tech: ["Agent", "Vibe Coding", "AI 协作", "Prompt"], desc: "熟练运用 Agent 进行 Vibe Coding，通过自然语言驱动 AI 完成项目搭建、迭代与调试，追求快速可落地的开发流程", link: "" },
+        { name: "Obsidian × ima 知识库", tech: ["Obsidian", "ima", "Markdown", "知识管理"], desc: "使用 Obsidian 和 ima 构建个人知识库，管理 AI 学习笔记、灵感与素材，建立可持续积累的第二大脑", link: "" }
       ]
     }
   },
@@ -3808,10 +3843,12 @@ const resume = {
       category: "编程 & 工具",
       icon: "<svg class='ico' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='5' width='16' height='11' rx='2'/><path d='M2 19h20'/></svg>",
       bars: [
-        { name: "Python", level: 65 },
+        { name: "Python", level: 30 },
+        { name: "SW", level: 5 },
         { name: "NumPy / Pandas", level: 50 },
         { name: "Jupyter Notebook", level: 75 },
-        { name: "Markdown 文档", level: 80 }
+        { name: "Markdown 文档", level: 80 },
+        { name: "3D 建模 (持续发展中)", level: 20 }
       ]
     },
     {
