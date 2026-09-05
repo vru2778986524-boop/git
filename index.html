@@ -3624,6 +3624,26 @@ body {
     linear-gradient(to right, rgba(5,8,18,.78), rgba(5,8,18,.06)),
     url('hero-3d.svg?v=2') center / cover no-repeat !important;
 }
+
+/* ===== Fix hero background: opaque base + hide old hero-pattern ===== */
+.hero-pattern {
+  display: none !important;
+  background-image: none !important;
+}
+
+.hero {
+  background:
+    linear-gradient(to right, rgba(248,250,255,.78), rgba(255,255,255,.05)),
+    url('hero-3d.svg?v=3') center / cover no-repeat,
+    linear-gradient(180deg, #dbeafe 0%, #fce7f3 100%) !important;
+}
+
+[data-theme="dark"] .hero {
+  background:
+    linear-gradient(to right, rgba(5,8,18,.78), rgba(5,8,18,.06)),
+    url('hero-3d.svg?v=3') center / cover no-repeat,
+    linear-gradient(180deg, #0b1120 0%, #101a38 100%) !important;
+}
 </style>
 </head>
 <body>
