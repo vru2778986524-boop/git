@@ -1,63 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="900" height="650">
   <defs>
-    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#7dd3fc"/>
-      <stop offset="100%" stop-color="#0284c7"/>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a5f3fc"/>
+      <stop offset="45%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0f4c81"/>
     </linearGradient>
-    <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f9a8d4"/>
-      <stop offset="100%" stop-color="#db2777"/>
-    </linearGradient>
-    <radialGradient id="sphereBlue" cx="35%" cy="30%" r="75%">
-      <stop offset="0%" stop-color="#bae6fd"/>
-      <stop offset="100%" stop-color="#0369a1"/>
-    </radialGradient>
-    <radialGradient id="spherePink" cx="35%" cy="30%" r="75%">
+    <linearGradient id="pinkG" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#fbcfe8"/>
+      <stop offset="50%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#7a1f4d"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <radialGradient id="glassPink" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#ffe4f1"/>
+      <stop offset="55%" stop-color="#f9a8d4"/>
       <stop offset="100%" stop-color="#be185d"/>
     </radialGradient>
-    <radialGradient id="sphereCyan" cx="35%" cy="30%" r="75%">
-      <stop offset="0%" stop-color="#cffafe"/>
-      <stop offset="100%" stop-color="#0891b2"/>
+    <radialGradient id="glassBlue" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#e0f7ff"/>
+      <stop offset="55%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </radialGradient>
+    <radialGradient id="glassViolet" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#f5f3ff"/>
+      <stop offset="55%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
     </radialGradient>
   </defs>
-  <g opacity=".82">
-    <!-- big isometric cube -->
-    <polygon points="260,150 360,100 460,150 360,200" fill="url(#blue)"/>
-    <polygon points="260,150 360,200 360,310 260,260" fill="#0284c7"/>
-    <polygon points="360,200 460,150 460,260 360,310" fill="#0ea5e9"/>
-    <!-- pink sphere -->
-    <circle cx="620" cy="150" r="72" fill="url(#spherePink)"/>
-    <!-- cyan sphere small -->
-    <circle cx="120" cy="430" r="48" fill="url(#sphereCyan)"/>
-    <!-- blue sphere large -->
-    <circle cx="690" cy="430" r="90" fill="url(#sphereBlue)"/>
-    <!-- cylinder -->
-    <ellipse cx="420" cy="500" rx="100" ry="34" fill="url(#blue)"/>
-    <path d="M320,500 L320,420 A100,34 0 0 1 520,420 L520,500 A100,34 0 0 1 320,500 Z" fill="#38bdf8" opacity=".85"/>
-    <ellipse cx="420" cy="420" rx="100" ry="34" fill="#7dd3fc"/>
-    <!-- small cubes random -->
-    <g>
-      <polygon points="180,90 230,65 280,90 230,115" fill="url(#pink)"/>
-      <polygon points="180,90 230,115 230,165 180,140" fill="#db2777"/>
-      <polygon points="230,115 280,90 280,140 230,165" fill="#f472b6"/>
+
+  <g opacity=".85">
+    <!-- flowing ribbon -->
+    <path d="M60,260 C180,80 330,380 470,170 C610,-40 760,260 860,180"
+          fill="none" stroke="url(#ribbon)" stroke-width="26" stroke-linecap="round" opacity=".55"/>
+
+    <!-- glass spheres -->
+    <circle cx="150" cy="130" r="52" fill="url(#glassViolet)"/>
+    <ellipse cx="132" cy="112" rx="18" ry="10" fill="#fff" opacity=".45"/>
+    <circle cx="620" cy="160" r="70" fill="url(#glassPink)"/>
+    <ellipse cx="598" cy="138" rx="24" ry="13" fill="#fff" opacity=".5"/>
+    <circle cx="760" cy="420" r="96" fill="url(#glassBlue)"/>
+    <ellipse cx="730" cy="390" rx="32" ry="16" fill="#fff" opacity=".45"/>
+
+    <!-- wireframe orb -->
+    <g transform="translate(320,390)">
+      <circle r="120" fill="none" stroke="url(#blueG)" stroke-width="2" opacity=".6"/>
+      <ellipse rx="120" ry="44" fill="none" stroke="url(#pinkG)" stroke-width="2" opacity=".55"/>
+      <ellipse rx="120" ry="84" fill="none" stroke="url(#blueG)" stroke-width="2" opacity=".45"/>
+      <ellipse rx="44" ry="120" fill="none" stroke="url(#pinkG)" stroke-width="2" opacity=".55"/>
     </g>
-    <g>
-      <polygon points="80,220 120,200 160,220 120,240" fill="url(#blue)"/>
-      <polygon points="80,220 120,240 120,292 80,272" fill="#0369a1"/>
-      <polygon points="120,240 160,220 160,272 120,292" fill="#38bdf8"/>
+
+    <!-- broken / floating cube planes -->
+    <g transform="translate(170,470)">
+      <polygon points="0,0 55,-28 110,0 55,28" fill="url(#blueG)" opacity=".8"/>
+      <polygon points="0,0 55,28 55,92 0,64" fill="#0369a1" opacity=".75"/>
+      <polygon points="55,28 110,0 110,64 55,92" fill="#38bdf8" opacity=".82"/>
     </g>
-    <g>
-      <polygon points="540,300 580,280 620,300 580,320" fill="url(#pink)"/>
-      <polygon points="540,300 580,320 580,372 540,352" fill="#be185d"/>
-      <polygon points="580,320 620,300 620,352 580,372" fill="#ec4899"/>
+    <g transform="translate(520,300)">
+      <polygon points="0,0 42,-22 84,0 42,22" fill="url(#pinkG)" opacity=".75"/>
+      <polygon points="0,0 42,22 42,74 0,52" fill="#9d174d" opacity=".7"/>
+      <polygon points="42,22 84,0 84,52 42,74" fill="#f472b6" opacity=".78"/>
     </g>
-    <!-- cone -->
-    <g>
-      <polygon points="60,540 110,470 160,540" fill="url(#blue)"/>
-      <ellipse cx="110" cy="540" rx="50" ry="12" fill="#0ea5e9"/>
-    </g>
-    <!-- floating ring -->
-    <ellipse cx="300" cy="340" rx="130" ry="36" fill="none" stroke="url(#pink)" stroke-width="14" opacity=".75"/>
+
+    <!-- floating shards -->
+    <polygon points="90,540 135,505 160,555" fill="url(#pinkG)" opacity=".5"/>
+    <polygon points="800,90 840,120 810,155" fill="url(#blueG)" opacity=".45"/>
+    <polygon points="430,70 470,45 500,80" fill="url(#pinkG)" opacity=".4"/>
+
+    <!-- orbital ring -->
+    <ellipse cx="650" cy="330" rx="180" ry="52" fill="none" stroke="url(#blueG)" stroke-width="10" opacity=".45"/>
+    <ellipse cx="630" cy="345" rx="130" ry="38" fill="none" stroke="url(#pinkG)" stroke-width="4" opacity=".55"/>
   </g>
 </svg>
